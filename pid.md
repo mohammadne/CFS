@@ -1,5 +1,9 @@
 # PID
 
+## resources
+
+- <https://medium.com/swlh/build-containers-from-scratch-in-go-part-1-namespaces-c07d2291038b>
+
 ## demo
 
 here we try to demonstrate what will happening when we spawn up a new container from podman,docker or other CREs.
@@ -13,7 +17,7 @@ here we try to demonstrate what will happening when we spawn up a new container 
 - in child 1
 
     ``` bash
-    unshare -p -f --mount-proc /bin/bash
+    unshare --pid --fork --mount-proc /bin/bash
 
     ps -ef
 
