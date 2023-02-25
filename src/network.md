@@ -154,6 +154,8 @@ ip netns exec lemon_ns ip route add default via 10.0.0.20
 ip netns exec lemon_ns python3 -m http.server 8080 &
 
 # routing issues for forwarding packets between apple and lemon namespaces
+ip link list
+
 # so we use bridge interface to overcome that
 ip link add dev host_bridge type bridge
 ip address add 10.0.0.1/24 dev host_bridge
