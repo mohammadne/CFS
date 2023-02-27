@@ -17,6 +17,10 @@ here we try to demonstrate what will happening when we spawn up a new container 
 - in child 1
 
     ``` bash
+    # --pid: unshare the PID namespace.
+    # --fork: fork the specified program as a child process of unshare rather than running it directly
+    # --mount-proc: mount the proc filesystem at mountpoint
+    # /bin/bash: the program to be run inside new process
     unshare --pid --fork --mount-proc /bin/bash
 
     ps -ef
