@@ -53,7 +53,7 @@ df
 
     mkdir -p $HOME/alpine-rootfs
 
-    tar xzvf -C $HOME/alpine-rootfs
+    tar xzvf alpine-minirootfs-3.17.2-x86_64.tar.gz -C $HOME/alpine-rootfs
 
     # create this file at the root of alpine-rootfs
     touch $HOME/alpine-rootfs/HOST_UBUNTU_ROOT_FS
