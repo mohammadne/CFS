@@ -1,6 +1,10 @@
 # UTS
 
+## resources
+
 - <https://en.wikipedia.org/wiki/Linux_namespaces>
+
+- <https://www.redhat.com/sysadmin/uts-namespace>
 
 ## demo
 
@@ -19,20 +23,20 @@
 - pane1
 
     ```bash
-    hostname outside
+    hostname uts1
     hostname
     ```
 
 - pane2
 
     ```bash
-    # here also the hostname changes to newhost
+    # here also the hostname changes to uts1
     hostname
 
     unshare --uts /bin/bash
     hostname
 
-    hostname inside
+    hostname uts2
     bash # update PS1 value
     ```
 
@@ -42,6 +46,6 @@
     # the hostname doesn't take affect
     hostname
 
-    # like the inception movie
+    # list all uts namespaces
     lsns --type uts
     ```
