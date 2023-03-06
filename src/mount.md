@@ -11,8 +11,27 @@
 ## demo1
 
 ```bash
-# system mount points
+# list the currently available file-system types
+cat /proc/filesystems
+
+# list the currently mounted file-systems
 mount
+
+# list the mounted file-systems with a better format
+findmnt
+
+# list block-devices with their mount-points
+lsblk
+
+# list devices
+ls /dev
+
+mkdir /mnt/16gb-usb
+mount /dev/sdb1 /mnt/16gb-usb
+
+mount | grep 16gb-usb
+
+umount /mnt/16gb-usb
 
 # report file system disk space usage
 df
@@ -25,6 +44,7 @@ df
 ```bash
 # we are on the ubuntu
 lsb_release -a
+uname -a
 
 cd
 
@@ -42,17 +62,17 @@ touch $HOME/alpine-rootfs/HOST_UBUNTU_ROOT_FS
 - pane2
 
 ```bash
-unshare --uts --pid --fork chroot $HOME/alpine-rootfs /bin/bash -c "hostname inside; /bin/sh"
-
+unshare --uts --pid --fork /bin/bash
 ls -lah
+exit
 
+unshare --uts --pid --fork chroot $HOME/alpine-rootfs /bin/sh
+ls -lah
 apt # not work
 apk # works!
 
-ping google.com
-cat /etc/resolv.conf
-echo "nameserver 1.1.1.1" >> /etc/resolv.conf
-echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+# not show anything, because proc of the new process is on /proc not the $HOME/proc
+ps -ef
 
 # change the pid space
 # mount -t type device dir
@@ -66,17 +86,17 @@ mount -t proc proc ./proc -o nosuid,nodev,noexec
 - pane 1
 
 ```bash
-# not works
-lsns
-
+findmnt
 umount $HOME/alpine-rootfs/proc
-mount -t proc proc /proc
+findmnt
 ```
 
 - pane 2
 
 ```bash
 mount -t proc proc ./proc -o nosuid,nodev,noexec
+
+# remount part of the file hierarchy somewhere else
 mkdir -p /mnt/test
 mount --bind /usr/bin/ /mnt/test
 
@@ -88,6 +108,7 @@ ls -lah /mnt/test
 
 ```bash
 # /mnt/test is also here
+findmnt
 mount
 
 # we can see child namespace mount points take affect on the host
@@ -105,14 +126,19 @@ exit
 
 # here we use --mount to seperate mount points of the processes inside the container
 # also we can run this with --net (ip netns add)
-unshare --uts --pid --mount --fork chroot $HOME/alpine-rootfs /bin/bash -c "hostname inside; /bin/sh"
+unshare --uts --pid --mount --fork chroot $HOME/alpine-rootfs /bin/sh
+
 
 mount
+mount -t proc proc ./proc -o nosuid,nodev,noexec
+mount
 
+# remount part of the file hierarchy somewhere else
 mkdir -p /mnt/test
 mount --bind /usr/bin/ /mnt/test
 
 mount
+apk add findmnt
 ```
 
 - pane 1
@@ -120,6 +146,5 @@ mount
 ```bash
 mount
 
-# like the inception movie
-lsns --type mnt
+mount | grep alpine-rootfs
 ```
