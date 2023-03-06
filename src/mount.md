@@ -91,7 +91,7 @@ df
     findmnt
     ```
 
-    - pane 2
+- pane 2
 
     ```bash
     mount -t proc proc ./proc -o nosuid,nodev,noexec
