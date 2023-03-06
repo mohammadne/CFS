@@ -120,5 +120,6 @@ mount
 ```bash
 mount
 
+# like the inception movie
 lsns --type mnt
 ```
