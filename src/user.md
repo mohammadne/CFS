@@ -52,8 +52,13 @@
     id
 
     # get remapping (ID-inside-ns ID-outside-ns range)
-    cat /proc/$$/uid_map # $$ is the PID of the bash
-    cat /proc/self/uid_map # the self refers to the cat command itself
+    
+    # $$ is the PID of the bash
+    cat /proc/$$/uid_map 
+    
+    # the self refers to the cat command itself (ls -l /proc/self/exe)
+    # every time you run the ls command, you'll get a new process ID
+    cat /proc/self/uid_map 
 
     # create a file
     touch temp.txt
