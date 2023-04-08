@@ -1,6 +1,8 @@
-# Namespaces
+# CFS
 
-demonstrate linux namespaces
+> CFS stands for Container From Scratch
+
+here we aimed to demonstrate linux namespaces and a sample code show how docker uses namespaces to create containerized environments.
 
 ## resources
 
