@@ -1,0 +1,17 @@
+{
+    "group": {
+        "default": {
+            "targets": [
+                "cfs"
+            ]
+        }
+    },
+    "target": {
+        "cfs": {
+            "dockerfile": "build/package/Dockerfile",
+            "tags": [
+                "ghcr.io/mohammadne/cfs"
+            ]
+        }
+    }
+}
