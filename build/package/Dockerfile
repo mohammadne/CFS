@@ -25,8 +25,8 @@ FROM alpine:latest
 LABEL maintainer="Mohammad Nasr <mohammadne.dev@gmail.com>"
 
 # download and extract alpine-minirootfs
-RUN curl -O --output-dir /tmp https://dl-cdn.alpinelinux.org/alpine/v3.17/releases/x86_64/alpine-minirootfs-3.17.2-x86_64.tar.gz && \
-    rm -rf /tmp/alpine-rootfs && mkdir /tmp/alpine-rootfs && \
+RUN cd /tmp && rm -rf /tmp/alpine-rootfs && mkdir /tmp/alpine-rootfs && \
+    curl -O https://dl-cdn.alpinelinux.org/alpine/v3.17/releases/x86_64/alpine-minirootfs-3.17.2-x86_64.tar.gz && \
     tar xzvf /tmp/alpine-minirootfs-3.17.2-x86_64.tar.gz -C /tmp/alpine-rootfs && \
     touch /tmp/alpine-rootfs/CONTAINER_ROOT_FS
 
