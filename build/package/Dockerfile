@@ -19,12 +19,12 @@ COPY . .
 # Build the Go app
 RUN go build -o /cfs
 
-FROM alpine:latest
+FROM ubuntu:latest
 
 # Add Maintainer Info
 LABEL maintainer="Mohammad Nasr <mohammadne.dev@gmail.com>"
 
-RUN apk add curl tar
+RUN apt install curl tar
 
 # download and extract alpine-minirootfs
 RUN cd /tmp && rm -rf /tmp/alpine-rootfs && mkdir /tmp/alpine-rootfs && \
