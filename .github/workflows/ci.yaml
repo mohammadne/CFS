@@ -45,5 +45,5 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: docker/bake-action@v2
         with:
-          files: "golang/build/package/docker-bake.json"
+          files: "build/package/docker-bake.json"
           push: true
