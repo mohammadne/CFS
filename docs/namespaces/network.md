@@ -46,7 +46,7 @@ ip netns exec apple_ns ip link list
 ip link set dev host_veth up
 ip link list
 
-# assign ip address to host_veth
+# assign ip address to host_veth (the cidr notation will add rule into routing table)
 ip address add 10.0.0.10/24 dev host_veth
 ip address list
 
