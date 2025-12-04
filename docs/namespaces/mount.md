@@ -49,20 +49,21 @@ df
     cd
 
     # download alpine minirootsf (https://alpinelinux.org/downloads/)
-    curl -O https://dl-cdn.alpinelinux.org/alpine/v3.17/releases/x86_64/alpine-minirootfs-3.17.2-x86_64.tar.gz
+    curl -O https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-minirootfs-3.23.0-x86_64.tar.gz
 
-    mkdir -p $HOME/alpine-rootfs
+    mkdir -p ./alpine-rootfs
 
-    tar xzvf alpine-minirootfs-3.17.2-x86_64.tar.gz -C $HOME/alpine-rootfs
+    tar xzvf alpine-minirootfs-3.23.0-x86_64.tar.gz -C ./alpine-rootfs
 
     # create this file at the root of alpine-rootfs
-    touch $HOME/alpine-rootfs/HOST_UBUNTU_ROOT_FS
+    touch ./alpine-rootfs/HOST_UBUNTU_ROOT_FS
     ```
 
 - pane2
 
     ```bash
     unshare --uts --pid --fork /bin/bash
+    echo $$
     ls -lah
     exit
 
