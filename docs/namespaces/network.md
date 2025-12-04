@@ -6,9 +6,22 @@
 
 - <https://linuxconfig.org/how-to-turn-on-off-ip-forwarding-in-linux>
 
+## Questions
+
+- how to `create` network namespaces
+- how to spawn a `process in a network` namespace
+- how does a Docker container or Kubernetes pod have its own `localhost`
+- how to create `virtual interfaces`
+- how does `communication` between Docker containers and Kubernetes pods work
+- how does a Docker container or Kubernetes pod communicate with the `local network`
+- how does a Docker container or Kubernetes pod communicate with the `internet`
+- how to use `iptables` to handle traffic between interfaces
+
 ## demo 1
 
 ```bash
+apt install python3 iproute2 iputils-ping iptables -y
+
 # start HTTP server in host namespace
 python3 -m http.server 8080
 
