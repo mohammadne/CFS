@@ -52,7 +52,10 @@ func pull(image string) {
 
 	resp, err := http.Get(url)
 	must(err)
-	defer resp.Body.Close()
+	defer func() {
+		err = resp.Body.Close()
+		must(err)
+	}()
 
 	// Prepare image directory
 	rootfsPath := filepath.Join("images", image)
@@ -80,7 +83,8 @@ func pull(image string) {
 			f, err := os.OpenFile(target, os.O_CREATE|os.O_WRONLY, os.FileMode(header.Mode))
 			must(err)
 			_, err = io.Copy(f, tarReader)
-			f.Close()
+			must(err)
+			err = f.Close()
 			must(err)
 
 		case tar.TypeSymlink:
