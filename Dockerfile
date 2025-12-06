@@ -1,7 +1,7 @@
 FROM golang:1.25.4 AS builder
 WORKDIR /src
 COPY . ./
-RUN cd cmd/server && CGO_ENABLED=0 go build -o cfs && mv cfs /usr/bin
+RUN CGO_ENABLED=0 go build -o cfs && mv cfs /usr/bin
 
 # STEP 2 build a small image
 FROM alpine:3.22.2
