@@ -1,0 +1,12 @@
+services:
+  sandbox:
+    image: golang:1.25.5-alpine3.23
+    container_name: go-sandbox
+    privileged: true
+    cap_add:
+      - ALL
+    working_dir: /code
+    volumes:
+      - ./:/code
+    stdin_open: true
+    tty: true

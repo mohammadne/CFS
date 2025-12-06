@@ -16,3 +16,9 @@
 
 # IDEs
 /.idea/
+
+# the pulled alpine rootfs directory
+images
+
+# the golang binary output
+cfs
